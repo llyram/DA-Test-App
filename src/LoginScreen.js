@@ -21,6 +21,9 @@ import {
   Image,
   Pressable,
   Modal,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from 'react-native';
 
 const LoginScreen = ({navigation}) => {
@@ -42,70 +45,79 @@ const LoginScreen = ({navigation}) => {
   };
 
   return (
-    <View style={styles.mainContainer}>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
-          setModalVisible(!modalVisible);
-        }}>
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>Wrong Username or Password</Text>
-            <Pressable
-              style={[styles.modalbutton, styles.buttonClose]}
-              onPress={() => setModalVisible(!modalVisible)}>
-              <Text style={styles.textStyle}>Retry</Text>
-            </Pressable>
+    <KeyboardAvoidingView behavior="position">
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <ScrollView
+          style={styles.mainContainer}
+          contentContainerStyle={{alignItems: 'center'}}>
+          <View style={styles.headerbackground}></View>
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={() => {
+              Alert.alert('Modal has been closed.');
+              setModalVisible(!modalVisible);
+            }}>
+            <View style={styles.centeredView}>
+              <View style={styles.modalView}>
+                <Text style={styles.modalText}>Wrong Username or Password</Text>
+                <Pressable
+                  style={[styles.modalbutton, styles.buttonClose]}
+                  onPress={() => setModalVisible(!modalVisible)}>
+                  <Text style={styles.textStyle}>Retry</Text>
+                </Pressable>
+              </View>
+            </View>
+          </Modal>
+          <View style={styles.headerContainer}>
+            <Image
+              style={styles.image}
+              source={require('./assets/images/logo_full.png')}
+            />
           </View>
-        </View>
-      </Modal>
-      <View style={styles.headerContainer}>
-        <Image
-          style={styles.image}
-          source={require('./assets/images/logo_full.png')}
-        />
-      </View>
-      <TextInput
-        style={styles.input}
-        onChangeText={username => {
-          setUsername(username);
-        }}
-      />
-      <Text style={styles.label}>Username</Text>
-      <TextInput
-        secureTextEntry={true}
-        style={styles.input}
-        onChangeText={password => {
-          setPassword(password);
-        }}
-      />
-      <Text style={styles.label}>Password</Text>
-      <Text style={styles.error}>{error}</Text>
-      <Pressable style={styles.button} onPress={validateLogin}>
-        <Text style={styles.buttonText}>LOGIN</Text>
-      </Pressable>
-    </View>
+          <TextInput
+            style={styles.input}
+            onChangeText={username => {
+              setUsername(username);
+            }}
+          />
+          <Text style={styles.label}>Username</Text>
+          <TextInput
+            secureTextEntry={true}
+            style={styles.input}
+            onChangeText={password => {
+              setPassword(password);
+            }}
+          />
+          <Text style={styles.label}>Password</Text>
+          <Text style={styles.error}>{error}</Text>
+          <Pressable style={styles.button} onPress={validateLogin}>
+            <Text style={styles.buttonText}>LOGIN</Text>
+          </Pressable>
+        </ScrollView>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 };
 
 const styles = StyleSheet.create({
   mainContainer: {
-    alignItems: 'center',
+    // alignItems: 'center',
     backgroundColor: '#438AB6',
-    height: '1000%',
+    height: '100%',
+  },
+  headerbackground: {
+    position: 'absolute',
+    backgroundColor: 'white',
+    height: 1000,
+    width: 1000,
+    borderRadius: 500,
     top: -800,
   },
   headerContainer: {
-    backgroundColor: 'white',
-    width: 1000,
-    height: 1000,
-    borderRadius: 500,
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    marginBottom: 80,
+    marginBottom: 0,
+    top: -50,
   },
   image: {
     resizeMode: 'contain',

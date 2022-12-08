@@ -33,12 +33,11 @@ import SplashScreen from 'react-native-splash-screen';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-
   useEffect(() => {
     setTimeout(() => {
-      SplashScreen.hide();      
+      SplashScreen.hide();
     }, 5000);
-  }, [])
+  }, []);
 
   return (
     <NavigationContainer>
