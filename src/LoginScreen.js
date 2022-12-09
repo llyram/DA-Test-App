@@ -45,59 +45,63 @@ const LoginScreen = ({navigation}) => {
   };
 
   return (
-    <KeyboardAvoidingView behavior="position">
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <ScrollView
-          style={styles.mainContainer}
-          contentContainerStyle={{alignItems: 'center'}}>
-          <View style={styles.headerbackground}></View>
-          <Modal
-            animationType="slide"
-            transparent={true}
-            visible={modalVisible}
-            onRequestClose={() => {
-              Alert.alert('Modal has been closed.');
-              setModalVisible(!modalVisible);
-            }}>
-            <View style={styles.centeredView}>
-              <View style={styles.modalView}>
-                <Text style={styles.modalText}>Wrong Username or Password</Text>
-                <Pressable
-                  style={[styles.modalbutton, styles.buttonClose]}
-                  onPress={() => setModalVisible(!modalVisible)}>
-                  <Text style={styles.textStyle}>Retry</Text>
-                </Pressable>
+    <View style={styles.mainContainer}>
+      <KeyboardAvoidingView behavior="position">
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <ScrollView
+            // style={styles.mainContainer}
+            contentContainerStyle={{alignItems: 'center'}}>
+            <View style={styles.headerbackground}></View>
+            <Modal
+              animationType="slide"
+              transparent={true}
+              visible={modalVisible}
+              onRequestClose={() => {
+                Alert.alert('Modal has been closed.');
+                setModalVisible(!modalVisible);
+              }}>
+              <View style={styles.centeredView}>
+                <View style={styles.modalView}>
+                  <Text style={styles.modalText}>
+                    Wrong Username or Password
+                  </Text>
+                  <Pressable
+                    style={[styles.modalbutton, styles.buttonClose]}
+                    onPress={() => setModalVisible(!modalVisible)}>
+                    <Text style={styles.textStyle}>Retry</Text>
+                  </Pressable>
+                </View>
               </View>
+            </Modal>
+            <View style={styles.headerContainer}>
+              <Image
+                style={styles.image}
+                source={require('./assets/images/logo_full.png')}
+              />
             </View>
-          </Modal>
-          <View style={styles.headerContainer}>
-            <Image
-              style={styles.image}
-              source={require('./assets/images/logo_full.png')}
+            <TextInput
+              style={styles.input}
+              onChangeText={username => {
+                setUsername(username);
+              }}
             />
-          </View>
-          <TextInput
-            style={styles.input}
-            onChangeText={username => {
-              setUsername(username);
-            }}
-          />
-          <Text style={styles.label}>Username</Text>
-          <TextInput
-            secureTextEntry={true}
-            style={styles.input}
-            onChangeText={password => {
-              setPassword(password);
-            }}
-          />
-          <Text style={styles.label}>Password</Text>
-          <Text style={styles.error}>{error}</Text>
-          <Pressable style={styles.button} onPress={validateLogin}>
-            <Text style={styles.buttonText}>LOGIN</Text>
-          </Pressable>
-        </ScrollView>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+            <Text style={styles.label}>Username</Text>
+            <TextInput
+              secureTextEntry={true}
+              style={styles.input}
+              onChangeText={password => {
+                setPassword(password);
+              }}
+            />
+            <Text style={styles.label}>Password</Text>
+            <Text style={styles.error}>{error}</Text>
+            <Pressable style={styles.button} onPress={validateLogin}>
+              <Text style={styles.buttonText}>LOGIN</Text>
+            </Pressable>
+          </ScrollView>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
+    </View>
   );
 };
 
@@ -132,6 +136,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     fontSize: 20,
+    borderRadius: 5,
   },
   button: {
     width: 200,
