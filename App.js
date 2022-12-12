@@ -34,14 +34,15 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
   useEffect(() => {
-    setTimeout(() => {
-      SplashScreen.hide();
-    }, 5000);
+    // setTimeout(() => {
+    //   SplashScreen.hide();
+    // }, 5000);
+    SplashScreen.hide();
   }, []);
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator initialRouteName="Dashboard">
         <Stack.Screen
           options={{
             headerShown: false,

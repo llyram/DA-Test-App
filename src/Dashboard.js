@@ -24,11 +24,25 @@ import {
 } from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
+import MapView, {Marker} from 'react-native-maps';
 
 const Dashboard: () => Node = () => {
+  const tokyoRegion = {
+    latitude: 12.85984,
+    longitude: 77.43908,
+    latitudeDelta: 0.01,
+    longitudeDelta: 0.01,
+  };
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Welcome to Dashboard</Text>
+      <Text style={styles.text}>Map View</Text>
+      <MapView
+      style={{height: "80%", width: '100%'}}
+      initialRegion={tokyoRegion}
+      showsUserLocation
+  >
+    <Marker coordinate={tokyoRegion} />
+  </MapView>
     </View>
   );
 };
