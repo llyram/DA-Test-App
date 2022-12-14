@@ -25,10 +25,11 @@ import {
 
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import AnimatedMapRegion from 'react-native-maps/lib/AnimatedRegion';
 
 const GoogleLogin = () => {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [userInfo, setUserInfo] = useState([]);
+  const [userInfo, setUserInfo] = useState();
 
   GoogleSignin.configure({
     webClientId:
@@ -70,19 +71,23 @@ const GoogleLogin = () => {
   };
 
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      {loggedIn ? (
+    <View style={{flex: 1, alignItems: 'center', justifyContent:"center"}}>
+      {loggedIn && userInfo ? (
         <View>
-          {console.log(userInfo.user.photoURL)}
+        <View style={{flexDirection:"row", paddingBottom:20}}>
+          {console.log(userInfo.user.displayName)}
           <Image
             style={{height: 100, width: 100, borderRadius: 25, resizeMode:'contain'}}
             source={{uri: userInfo.user.photoURL}}
           />
-          <Text>Name: {userInfo.user.displayName}</Text>
-          <Text>Email: {userInfo.user.email}</Text>
-
+          <View style={{justifyContent:"center", padding:10}}>
+          <Text style={{fontWeight:"bold", fontSize:20}}>{userInfo.user.displayName}</Text>
+          <Text>{userInfo.user.email}</Text>
+          </View>
+            </View>
           <Button title="Log Out" onPress={signOut} />
         </View>
+
       ) : (
         <Button title="Sign in with Google" onPress={signInWithGoogleAsync} />
       )}
