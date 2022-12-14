@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "293064163996",
+    "project_id": "da-app-80cec",
+    "storage_bucket": "da-app-80cec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:293064163996:android:4862bf84d6c6d06e422359",
+        "android_client_info": {
+          "package_name": "com.dalogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "293064163996-217p1glbpdbqqng2sgje77j5f4d09hag.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dalogin",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "293064163996-k4fcpfbs6i43vqmdejeddbqj91i29v0i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzuOnVFMfWHdPtMfe5TlLVoU5mfDHu3W4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "293064163996-k4fcpfbs6i43vqmdejeddbqj91i29v0i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

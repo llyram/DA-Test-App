@@ -29,6 +29,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LoginScreen from './src/LoginScreen';
 import Dashboard from './src/Dashboard';
 import SplashScreen from 'react-native-splash-screen';
+import GoogleLogin from './src/GoogleLogin';
 
 const Stack = createNativeStackNavigator();
 
@@ -42,7 +43,7 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Dashboard">
+      <Stack.Navigator initialRouteName="GoogleLogin">
         <Stack.Screen
           options={{
             headerShown: false,
@@ -56,6 +57,13 @@ const App = () => {
           }}
           name="Dashboard"
           component={Dashboard}
+        />
+        <Stack.Screen
+          options={{
+            headerShown: false,
+          }}
+          name="GoogleLogin"
+          component={GoogleLogin}
         />
       </Stack.Navigator>
     </NavigationContainer>
